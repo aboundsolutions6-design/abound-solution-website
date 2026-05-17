@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Feedback - Abound Solution LTD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/feedback.css">
+    </head>
+<body>
+
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">ABOUND <span>SOLUTION</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+             <li><a href="project.html">Projects</a></li>
+            <li><a href="feedback.html" class="active">Testimonials</a></li>
+            <li><a href="contacts.html">Contact Us</a></li>s
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="feedback-hero">
+        <div class="hero-content">
+            <div class="floating-icon">
+                <i class="fas fa-star-of-life"></i>
+            </div>
+            <h1>Client <span class="gradient-text">Testimonials</span></h1>
+            <p>What our valued customers say about their experience with Abound Solution LTD</p>
+            <div class="rating-badge">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <span>4.9/5 Average Rating</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-showcase">
+        <div class="stats-wrapper">
+            <div class="stat-block">
+                <div class="stat-number" id="stat1">0</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-number" id="stat2">0</div>
+                <div class="stat-label">Satisfaction Rate %</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-number" id="stat3">0</div>
+                <div class="stat-label">5-Star Reviews</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Testimonial -->
+    <section class="featured-testimonial">
+        <div class="featured-card">
+            <div class="quote-icon">
+                <i class="fas fa-quote-right"></i>
+            </div>
+            <div class="featured-content">
+                <p class="featured-text">"Abound Solution transformed our business with their professional solar installation. We've reduced our electricity bill by 70% and have never experienced any downtime. Their team is responsive, knowledgeable, and truly cares about customer satisfaction."</p>
+                <div class="featured-author">
+                    <div class="author-avatar">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="author-info">
+                        <h4>James Mwangi</h4>
+                        <p>CEO, GreenTech Industries</p>
+                    </div>
+                    <div class="verified-badge">
+                        <i class="fas fa-check-circle"></i> Verified Client
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Grid -->
+    <section class="testimonials-grid">
+        <div class="section-header">
+            <h2>What Our <span class="highlight">Customers Say</span></h2>
+            <p>Real experiences from real clients across Kenya</p>
+        </div>
+
+        <div class="grid-container">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card">
+                <div class="card-header">
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <div class="quote-mark"><i class="fas fa-quote-left"></i></div>
+                </div>
+                <div class="card-body">
+                    <p>"Excellent service from start to finish. The team installed our solar system within 3 days and it's been working perfectly. Highly recommend Abound Solution!"</p>
+                </div>
+                <div class="card-footer">
+                    <div class="client-avatar"><i class="fas fa-user-circle"></i></div>
+                    <div class="client-details"><h4>Sarah Kamau</h4><p>Homeowner, Nairobi</p></div>
+                    <div class="social-proof"><i class="fab fa-twitter"></i></div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card">
+                <div class="card-header">
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <div class="quote-mark"><i class="fas fa-quote-left"></i></div>
+                </div>
+                <div class="card-body">
+                    <p>"The security system they installed at our compound has given us peace of mind. The CCTV cameras are crystal clear and the gate automation works perfectly."</p>
+                </div>
+                <div class="card-footer">
+                    <div class="client-avatar"><i class="fas fa-user-circle"></i></div>
+                    <div class="client-details"><h4>Peter Omondi</h4><p>Property Manager, Kisumu</p></div>
+                    <div class="social-proof"><i class="fab fa-linkedin"></i></div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card">
+                <div class="card-header">
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <div class="quote-mark"><i class="fas fa-quote-left"></i></div>
+                </div>
+                <div class="card-body">
+                    <p>"Their electrical installation services are top-notch. They rewired our entire office building and the quality of work is outstanding. Very professional!"</p>
+                </div>
+                <div class="card-footer">
+                    <div class="client-avatar"><i class="fas fa-user-circle"></i></div>
+                    <div class="client-details"><h4>Mary Wanjiku</h4><p>Business Owner, Nakuru</p></div>
+                    <div class="social-proof"><i class="fab fa-facebook"></i></div>
+                </div>
+            </div>
+
+            <!-- Testimonial 4 -->
+            <div class="testimonial-card">
+                <div class="card-header">
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <div class="quote-mark"><i class="fas fa-quote-left"></i></div>
+                </div>
+                <div class="card-body">
+                    <p>"The solar water heater has been a game-changer for our family. No more high electricity bills for hot water. Installation was quick and very helpful."</p>
+                </div>
+                <div class="card-footer">
+                    <div class="client-avatar"><i class="fas fa-user-circle"></i></div>
+                    <div class="client-details"><h4>John Mutua</h4><p>Homeowner, Machakos</p></div>
+                    <div class="social-proof"><i class="fab fa-instagram"></i></div>
+                </div>
+            </div>
+
+            <!-- Testimonial 5 -->
+            <div class="testimonial-card">
+                <div class="card-header">
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <div class="quote-mark"><i class="fas fa-quote-left"></i></div>
+                </div>
+                <div class="card-body">
+                    <p>"The gate installation service exceeded our expectations. The automatic sliding gate is not only secure but also adds beauty to our home. Very happy!"</p>
+                </div>
+                <div class="card-footer">
+                    <div class="client-avatar"><i class="fas fa-user-circle"></i></div>
+                    <div class="client-details"><h4>Grace Nduati</h4><p>Homeowner, Thika</p></div>
+                    <div class="social-proof"><i class="fab fa-twitter"></i></div>
+                </div>
+            </div>
+
+            <!-- Testimonial 6 -->
+            <div class="testimonial-card">
+                <div class="card-header">
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <div class="quote-mark"><i class="fas fa-quote-left"></i></div>
+                </div>
+                <div class="card-body">
+                    <p>"Their after-sales support is amazing. When we had a minor issue with our inverter, they sent a technician within hours. Truly a caring company."</p>
+                </div>
+                <div class="card-footer">
+                    <div class="client-avatar"><i class="fas fa-user-circle"></i></div>
+                    <div class="client-details"><h4>David Kipchoge</h4><p>School Admin, Eldoret</p></div>
+                    <div class="social-proof"><i class="fab fa-linkedin"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Form -->
+    <section class="feedback-form-section">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Share Your <span class="highlight">Experience</span></h2>
+                <p>We value your feedback and would love to hear from you</p>
+            </div>
+            <form id="feedbackForm" class="feedback-form">
+                <div class="form-row">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Your Full Name" required id="userName">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-group">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" placeholder="Your Location (City)">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-star"></i>
+                        <select required id="userRating">
+                            <option value="">Select Rating</option>
+                            <option value="5">⭐⭐⭐⭐⭐ - Excellent</option>
+                            <option value="4">⭐⭐⭐⭐ - Very Good</option>
+                            <option value="3">⭐⭐⭐ - Good</option>
+                            <option value="2">⭐⭐ - Fair</option>
+                            <option value="1">⭐ - Poor</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group full-width">
+                    <i class="fas fa-comment"></i>
+                    <textarea rows="4" placeholder="Share your experience with Abound Solution LTD..." required id="userMessage"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span>Submit Feedback</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ABOUND SOLUTION LTD</h3>
+                <p>Leading solar energy and electrical solutions provider in Kenya.</p>
+                <div class="social-links">
+                    <a href="https://facebook.com/boniface mwiti" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="services.html">Services</a></p>
+                <p><a href="feedback.html">Testimonials</a></p>
+                <p><a href="contacts.html">Contact</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone"></i> +254 701 318 829</p>
+                <p><i class="fab fa-whatsapp"></i> +254 701 318 829</p>
+                <p><i class="fas fa-envelope"></i> aboundsolutionltd@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Abound Solution LTD. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Particle Animation - Light Mode (lighter particles)
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        let particles = [];
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        function createParticles() {
+            particles = [];
+            for (let i = 0; i < 60; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 2 + 1,
+                    speedX: (Math.random() - 0.5) * 0.3,
+                    speedY: (Math.random() - 0.5) * 0.3,
+                    opacity: Math.random() * 0.3 + 0.1
+                });
+            }
+        }
+        
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 123, 255, ${particle.opacity})`;
+                ctx.fill();
+                
+                particle.x += particle.speedX;
+                particle.y += particle.speedY;
+                
+                if (particle.x < 0) particle.x = canvas.width;
+                if (particle.x > canvas.width) particle.x = 0;
+                if (particle.y < 0) particle.y = canvas.height;
+                if (particle.y > canvas.height) particle.y = 0;
+            });
+            
+            // Draw connecting lines
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(0, 123, 255, ${0.05 * (1 - distance / 100)})`;
+                        ctx.stroke();
+                    }
+                }
+            }
+            
+            requestAnimationFrame(drawParticles);
+        }
+        
+        // Counter Animation
+        function startCounters() {
+            const counters = [
+                { element: document.getElementById('stat1'), target: 500, current: 0 },
+                { element: document.getElementById('stat2'), target: 98, current: 0 },
+                { element: document.getElementById('stat3'), target: 150, current: 0 }
+            ];
+            
+            function updateCounters() {
+                let allDone = true;
+                
+                counters.forEach(counter => {
+                    if (counter.current < counter.target) {
+                        allDone = false;
+                        counter.current += Math.ceil(counter.target / 50);
+                        if (counter.current > counter.target) counter.current = counter.target;
+                        
+                        if (counter.target === 98 && counter.current === 98) {
+                            counter.element.textContent = '98%';
+                        } else {
+                            counter.element.textContent = counter.current;
+                        }
+                    }
+                });
+                
+                if (!allDone) {
+                    requestAnimationFrame(updateCounters);
+                }
+            }
+            
+            updateCounters();
+        }
+        
+        // Form Submission
+        const feedbackForm = document.getElementById('feedbackForm');
+        if (feedbackForm) {
+            feedbackForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('userName').value;
+                const rating = document.getElementById('userRating').value;
+                
+                const successMsg = document.createElement('div');
+                successMsg.className = 'success-message';
+                successMsg.innerHTML = `<i class="fas fa-check-circle"></i> <p>Thank you ${name}! We appreciate your feedback.</p>`;
+                this.appendChild(successMsg);
+                this.reset();
+                
+                setTimeout(() => successMsg.remove(), 5000);
+            });
+        }
+        
+        // Initialize
+        resizeCanvas();
+        createParticles();
+        drawParticles();
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            createParticles();
+        });
+        
+        // Start counters when page loads
+        setTimeout(startCounters, 500);
+    </script>
+</body>
+</html>

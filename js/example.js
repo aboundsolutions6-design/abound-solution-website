@@ -1,0 +1,61 @@
+// Mobile Menu Toggle Function
+function initMobileMenu() {
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-links');
+    const navLinksItems = document.querySelectorAll('.nav-links li a');
+    
+    if (burger) {
+        // Toggle menu on burger click
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burger.classList.toggle('toggle');
+            // Prevent body scroll when menu is open
+            if (navLinks.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close menu when a link is clicked
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                burger.classList.remove('toggle');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!burger.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+                burger.classList.remove('toggle');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+}
+
+// Check if device is mobile
+function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+// Add touch-friendly enhancements for mobile
+function enhanceMobileTouch() {
+    if (isMobile()) {
+        // Increase touch target sizes
+        const buttons = document.querySelectorAll('button, a, .btn-learn-more, .cta-button');
+        buttons.forEach(btn => {
+            btn.style.padding = '12px 20px';
+            btn.style.minHeight = '44px'; // Apple's recommended minimum touch target
+        });
+    }
+}
+
+// Initialize everything when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    initMobileMenu();
+    enhanceMobileTouch();
+});

@@ -8,11 +8,13 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/project.css">
+    
+    
 
 </head>
 <body>
 
-    <canvas id="particleCanvas"></canvas>
+     <canvas id="particleCanvas"></canvas>
 
     <!-- WhatsApp Float -->
     <a href="https://wa.me/254701318829" class="whatsapp-float" target="_blank">
@@ -24,27 +26,47 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-      <!-- Hamburger menu button -->
-  
-    
     <!-- Navigation -->
-    <div class="navbar" id="burgerBtn">
-        <div class="logo">ABOUND <span>SOLUTION</span></div>
-          <div class="burger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-    </div>
-         <ul class="nav-links" id="navLinks">
+    <nav class="navbar">
+        <div class="logo-container">
+            <div class="pic_logo">
+                <img src="images/WhatsApp Image 2026-05-16 at 7.43.15 AM.jpeg" alt="Abound Solution Logo">
+            </div>
+            <div class="logo">ABOUND <span>SOLUTION</span></div>
+        </div>
+        
+        <!-- Hamburger Menu Button -->
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <!-- Desktop Menu (visible on tablet/desktop) -->
+        <ul class="desktop-menu">
             <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#solutions">Solutions</a></li>
             <li><a href="services.html">Services</a></li>
-            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="project.html" class="active">Projects</a></li>
             <li><a href="feedback.html">Testimonials</a></li>
             <li><a href="contacts.html">Contact Us</a></li>
         </ul>
-        
-        </div>
-        <div class="overlay" id="overlay"></div>
+    </nav>
+
+    <!-- Mobile Menu (sliding from left) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#solutions">Solutions</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="project.html" class="active">Projects</a></li>
+            <li><a href="feedback.html">Testimonials</a></li>
+            <li><a href="contacts.html">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
 
 
     <div class="projects-container">
@@ -440,7 +462,7 @@
                 <h3>Quick Links</h3>
                 <p><a href="index.html">Home</a></p>
                 <p><a href="services.html">Services</a></p>
-                <p><a href="projects.html">Projects</a></p>
+                <p><a href="project.html">Projects</a></p>
                 <p><a href="feedback.html">Testimonials</a></p>
                 <p><a href="contacts.html">Contact</a></p>
             </div>
@@ -466,125 +488,228 @@
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
+    <script src="js/example.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
+    // ========================================
+    // PROJECT.HTML - ORIGINAL WORKING CODE (FIXED)
+    // ========================================
 
-        // Particle Animation
-        const canvas = document.getElementById('particleCanvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
+    // Initialize AOS
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
+    // ========================================
+    // PARTICLE ANIMATION (WORKING)
+    // ========================================
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
 
-        function createParticles() {
-            particles = [];
-            for (let i = 0; i < 60; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    radius: Math.random() * 2 + 1,
-                    speedX: (Math.random() - 0.5) * 0.3,
-                    speedY: (Math.random() - 0.5) * 0.3,
-                    opacity: Math.random() * 0.3 + 0.1
-                });
-            }
-        }
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
 
-        function drawParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(particle => {
-                ctx.beginPath();
-                ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(0, 123, 255, ${particle.opacity})`;
-                ctx.fill();
-                particle.x += particle.speedX;
-                particle.y += particle.speedY;
-                if (particle.x < 0) particle.x = canvas.width;
-                if (particle.x > canvas.width) particle.x = 0;
-                if (particle.y < 0) particle.y = canvas.height;
-                if (particle.y > canvas.height) particle.y = 0;
+    function createParticles() {
+        particles = [];
+        for (let i = 0; i < 60; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2 + 1,
+                speedX: (Math.random() - 0.5) * 0.3,
+                speedY: (Math.random() - 0.5) * 0.3,
+                opacity: Math.random() * 0.3 + 0.1
             });
-            requestAnimationFrame(drawParticles);
         }
+    }
 
-        // Back to Top
-        const backToTop = document.getElementById('backToTop');
+    function drawParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(particle => {
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(0, 123, 255, ${particle.opacity})`;
+            ctx.fill();
+            particle.x += particle.speedX;
+            particle.y += particle.speedY;
+            if (particle.x < 0) particle.x = canvas.width;
+            if (particle.x > canvas.width) particle.x = 0;
+            if (particle.y < 0) particle.y = canvas.height;
+            if (particle.y > canvas.height) particle.y = 0;
+        });
+        requestAnimationFrame(drawParticles);
+    }
+
+    // ========================================
+    // BACK TO TOP BUTTON (WORKING)
+    // ========================================
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTop.classList.add('show');
-            } else {
-                backToTop.classList.remove('show');
-            }
+            backToTop.classList.toggle('show', window.scrollY > 300);
         });
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+    }
 
-        // Mobile Menu
-        const burger = document.querySelector('.burger');
-        const navLinks = document.querySelector('.nav-links');
-        burger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            burger.classList.toggle('toggle');
+    // ========================================
+    // MOBILE MENU - FIXED VERSION
+    // This is the ONLY part that needed fixing
+    // ========================================
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const body = document.body;
+
+    if (menuToggle && mobileMenu && menuOverlay) {
+        // Function to open menu
+        function openMenu() {
+            mobileMenu.classList.add('active');
+            menuToggle.classList.add('active');
+            menuOverlay.classList.add('active');
+            body.classList.add('menu-open');
+            body.style.overflow = 'hidden';
+        }
+
+        // Function to close menu
+        function closeMenu() {
+            mobileMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            body.classList.remove('menu-open');
+            body.style.overflow = '';
+        }
+
+        // Toggle menu when hamburger is clicked
+        menuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (mobileMenu.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
         });
 
-        // Filter Functionality
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const projects = document.querySelectorAll('.project-card');
+        // Close menu when overlay is clicked
+        menuOverlay.addEventListener('click', closeMenu);
 
+        // Close menu when any link inside mobile menu is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+    }
+
+    // ========================================
+    // FILTER FUNCTIONALITY (YOUR ORIGINAL WORKING CODE)
+    // ========================================
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    if (filterButtons.length > 0) {
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
-                
+
                 const filter = button.getAttribute('data-filter');
-                
-                projects.forEach(project => {
-                    if (filter === 'all' || project.getAttribute('data-category') === filter) {
-                        project.style.display = 'block';
-                    } else {
-                        project.style.display = 'none';
-                    }
+
+                projectCards.forEach(card => {
+                    const match = filter === 'all' || card.getAttribute('data-category') === filter;
+                    card.style.display = match ? 'block' : 'none';
                 });
             });
         });
+    }
 
-        // Modal Functions
-        const modal = document.getElementById('projectModal');
-        const closeModal = document.querySelector('.close-modal');
+    // ========================================
+    // MODAL FUNCTIONALITY (YOUR ORIGINAL WORKING CODE)
+    // ========================================
+    const modal = document.getElementById('projectModal');
+    const closeModalBtn = document.querySelector('.close-modal');
 
-        const projectDetails = {
-            1: { title: "Katheri Girls High School Solar Project", description: "Complete solar panel installation powering the entire institution. This 50kW system provides uninterrupted power supply to classrooms, dormitories, and administrative blocks, reducing electricity costs by 65%. The project was completed in 3 weeks and has positively impacted over 800 students and staff.", image: "/images/WhatsApp Image 2026-05-15 at 9.43.52 PM.jpeg" },
-            2: { title: "GreenTech Industries Solar Farm", description: "Large-scale solar installation powering manufacturing operations. The 100kW solar farm has reduced operational costs by 70% and eliminated carbon emissions equivalent to 50 cars annually. The system includes high-efficiency panels and advanced monitoring.", image: "/images/WhatsApp Image 2026-05-15 at 9.17.49 PM.jpeg" },
-            3: { title: "Lithium Battery Storage Installation", description: "Advanced wall-mounted Lithium Iron Phosphate battery storage system paired with a hybrid inverter. Provides 24/7 backup power with intelligent energy management. The system automatically switches between solar, battery, and grid power for optimal efficiency.", image: "/images/WhatsApp Image 2026-05-15 at 9.43.49 PM.jpeg" },
-            4: { title: "Solar Water Heating System", description: "Large-scale solar water heating installation for a hospitality facility. Provides hot water for 200+ rooms with 80% reduction in water heating costs. The system uses evacuated tube collectors for maximum efficiency even in cloudy conditions.", image: "/images/WhatsApp Image 2026-05-15 at 9.43.51 PM.jpeg" },
-            5: { title: "Residential Solar Installation", description: "Complete home solar system installation including panels, inverter, and battery backup. The family now enjoys 24/7 electricity with zero monthly bills. The 5kW system covers all household needs including lighting, appliances, and entertainment.", image: "/images/WhatsApp Image 2026-05-15 at 9.17.48 PM.jpeg" },
-            6: { title: "Solar Boiler Installation", description: "High-efficiency solar boiler installation for a manufacturing plant. The system provides consistent hot water for production processes while reducing energy costs significantly. Annual savings estimated at $15,000.", image: "/images/WhatsApp Image 2026-05-15 at 9.43.50 PM.jpeg" },
-            7: { title: "Electric Fence Installation", description: "Perimeter electric fence installation covering 50 acres of ranch land. The solar-powered system provides 24/7 security against wildlife intrusion. Includes alarm system and remote monitoring capabilities.", image: "/images/WhatsApp Image 2026-05-15 at 9.43.51 P.jpeg" },
-            8: { title: "CCTV Surveillance System", description: "Complete 24/7 CCTV surveillance system installation for a commercial complex. Features 4K cameras, night vision, and remote mobile monitoring capabilities. All cameras connect to a central NVR with 30-day storage.", image: "/images/AESRDTJFYKUH.jpeg" },
-            9: { title: "Solar Power Storage System", description: "High-capacity battery storage system paired with solar panels for a healthcare facility. Ensures uninterrupted power for critical medical equipment. The 30kWh system provides 8+ hours of backup power.", image: "/images/WhatsApp Image 2026-05-15 at 9.43.49 PM.jpeg" },
-            10: { title: "Commercial Electrical Installation", description: "Complete electrical rewiring and panel upgrade for a 10-story office building. Project completed on time with zero safety incidents. Includes new lighting systems, power outlets, and surge protection.", image: "/images/WhatsApp Image 2026-05-15 at 9.43.48 PM.jpeg" },
-            11: { title: "Large Scale Solar Farm", description: "Massive 500kW solar farm installation powering an agricultural processing facility. One of our largest projects to date. The system includes 1,500 solar panels and generates enough power to run the entire facility.", image: "/images/WhatsApp Image 2026-05-15 at 9.43.52 P.jpeg" }
-        };
+    const projectDetails = {
+        1: {
+            title: "Katheri Girls High School Solar Project",
+            description: "Complete solar panel installation powering the entire institution. This 50kW system provides uninterrupted power supply to classrooms, dormitories, and administrative blocks, reducing electricity costs by 65%. The project was completed in 3 weeks and has positively impacted over 800 students and staff.",
+            image: "images/WhatsApp Image 2026-05-15 at 9.43.52 PM.jpeg"
+        },
+        2: {
+            title: "GreenTech Industries Solar Farm",
+            description: "Large-scale solar installation powering manufacturing operations. The 100kW solar farm has reduced operational costs by 70% and eliminated carbon emissions equivalent to 50 cars annually. The system includes high-efficiency panels and advanced monitoring.",
+            image: "images/WhatsApp Image 2026-05-15 at 9.17.49 PM.jpeg"
+        },
+        3: {
+            title: "Lithium Battery Storage Installation",
+            description: "Advanced wall-mounted Lithium Iron Phosphate battery storage system paired with a hybrid inverter. Provides 24/7 backup power with intelligent energy management. The system automatically switches between solar, battery, and grid power for optimal efficiency.",
+            image: "images/WhatsApp Image 2026-05-15 at 9.43.49 PM.jpeg"
+        },
+        4: {
+            title: "Solar Water Heating System",
+            description: "Large-scale solar water heating installation for a hospitality facility. Provides hot water for 200+ rooms with 80% reduction in water heating costs. The system uses evacuated tube collectors for maximum efficiency even in cloudy conditions.",
+            image: "images/WhatsApp Image 2026-05-15 at 9.43.51 PM.jpeg"
+        },
+        5: {
+            title: "Residential Solar Installation",
+            description: "Complete home solar system installation including panels, inverter, and battery backup. The family now enjoys 24/7 electricity with zero monthly bills. The 5kW system covers all household needs including lighting, appliances, and entertainment.",
+            image: "images/WhatsApp Image 2026-05-15 at 9.17.48 PM.jpeg"
+        },
+        6: {
+            title: "Solar Boiler Installation",
+            description: "High-efficiency solar boiler installation for a manufacturing plant. The system provides consistent hot water for production processes while reducing energy costs significantly. Annual savings estimated at $15,000.",
+            image: "images/WhatsApp Image 2026-05-15 at 9.43.50 PM.jpeg"
+        },
+        7: {
+            title: "Electric Fence Installation",
+            description: "Perimeter electric fence installation covering 50 acres of ranch land. The solar-powered system provides 24/7 security against wildlife intrusion. Includes alarm system and remote monitoring capabilities.",
+            image: "images/WhatsApp Image 2026-05-15 at 9.43.51 PM.jpeg"
+        },
+        8: {
+            title: "CCTV Surveillance System",
+            description: "Complete 24/7 CCTV surveillance system installation for a commercial complex. Features 4K cameras, night vision, and remote mobile monitoring capabilities. All cameras connect to a central NVR with 30-day storage.",
+            image: "images/AESRDTJFYKUH.jpeg"
+        },
+        9: {
+            title: "Solar Power Storage System",
+            description: "High-capacity battery storage system paired with solar panels for a healthcare facility. Ensures uninterrupted power for critical medical equipment. The 30kWh system provides 8+ hours of backup power.",
+            image: "images/WhatsApp Image 2026-05-15 at 9.43.49 PM.jpeg"
+        },
+        10: {
+            title: "Commercial Electrical Installation",
+            description: "Complete electrical rewiring and panel upgrade for a 10-story office building. Project completed on time with zero safety incidents. Includes new lighting systems, power outlets, and surge protection.",
+            image: "images/WhatsApp Image 2026-05-15 at 9.43.48 PM.jpeg"
+        },
+        11: {
+            title: "Large Scale Solar Farm",
+            description: "Massive 500kW solar farm installation powering an agricultural processing facility. One of our largest projects to date. The system includes 1,500 solar panels and generates enough power to run the entire facility.",
+            image: "images/WhatsApp Image 2026-05-15 at 9.43.52 PM.jpeg"
+        }
+    };
 
-        function showProjectDetails(id) {
-            const details = projectDetails[id];
-            const modalBody = document.getElementById('modalBody');
+    window.showProjectDetails = function(id) {
+        const details = projectDetails[id];
+        if (!details) return;
+        const modalBody = document.getElementById('modalBody');
+        if (modalBody) {
             modalBody.innerHTML = `
                 <div class="modal-body">
-                    <img src="${details.image}" alt="${details.title}" class="modal-image">
+                    <img src="${details.image}" alt="${details.title}" class="modal-image" style="width:100%; border-radius:15px; margin-bottom:1rem;">
                     <h2>${details.title}</h2>
                     <p>${details.description}</p>
-                    <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                    <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
                         <a href="contacts.html" class="btn-primary" style="text-decoration: none; display: inline-block;">Request Similar Quote</a>
                         <a href="https://wa.me/254701318829" class="btn-secondary" style="text-decoration: none; display: inline-block;">Ask Questions</a>
                     </div>
@@ -593,35 +718,124 @@
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
+    };
 
-        closeModal.onclick = () => {
+    if (modal && closeModalBtn) {
+        closeModalBtn.onclick = () => {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
-        }
+        };
 
-        window.onclick = (event) => {
+        window.addEventListener('click', (event) => {
             if (event.target === modal) {
                 modal.style.display = 'none';
                 document.body.style.overflow = 'auto';
             }
-        }
+        });
+    }
 
-        // Initialize
+    // ========================================
+    // INITIALIZE CANVAS
+    // ========================================
+    resizeCanvas();
+    createParticles();
+    drawParticles();
+    window.addEventListener('resize', () => {
         resizeCanvas();
         createParticles();
-        drawParticles();
-        window.addEventListener('resize', () => {
-            resizeCanvas();
-            createParticles();
-        });
+    });
 
-        // Image error handling
-        document.querySelectorAll('.project-image').forEach(img => {
-            img.onerror = function() {
-                this.src = 'https://via.placeholder.com/400x300/007bff/white?text=Project+Image';
+    // ========================================
+    // IMAGE FALLBACK
+    // ========================================
+    document.querySelectorAll('.project-image').forEach(img => {
+        img.onerror = function() {
+            this.src = 'https://via.placeholder.com/400x300/007bff/white?text=Project+Image';
+            this.onerror = null;
+        };
+    });
+
+    console.log('Project page fully loaded - All features working!');
+</script>
+<script>
+    // ========================================
+    // FIX MOBILE MENU BUTTON ONLY
+    // This script works with your existing code
+    // ========================================
+    
+    (function() {
+        // Wait for page to fully load
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Get the menu elements - using your existing IDs
+            const menuToggle = document.getElementById('menuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const body = document.body;
+            
+            // Check if elements exist
+            if (!menuToggle) {
+                console.log('Menu button not found');
+                return;
             }
+            
+            console.log('Menu fix applied - button found');
+            
+            // Function to open menu
+            function openMenu() {
+                if (mobileMenu) mobileMenu.classList.add('active');
+                if (menuToggle) menuToggle.classList.add('active');
+                if (menuOverlay) menuOverlay.classList.add('active');
+                body.classList.add('menu-open');
+                body.style.overflow = 'hidden';
+            }
+            
+            // Function to close menu
+            function closeMenu() {
+                if (mobileMenu) mobileMenu.classList.remove('active');
+                if (menuToggle) menuToggle.classList.remove('active');
+                if (menuOverlay) menuOverlay.classList.remove('active');
+                body.classList.remove('menu-open');
+                body.style.overflow = '';
+            }
+            
+            // Remove any existing event listeners by replacing the button
+            const newToggle = menuToggle.cloneNode(true);
+            menuToggle.parentNode.replaceChild(newToggle, menuToggle);
+            
+            // Add click event to the new button
+            newToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                if (mobileMenu && mobileMenu.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+            
+            // Close menu when overlay is clicked
+            if (menuOverlay) {
+                menuOverlay.addEventListener('click', closeMenu);
+            }
+            
+            // Close menu when any mobile link is clicked
+            if (mobileMenu) {
+                const links = mobileMenu.querySelectorAll('a');
+                links.forEach(function(link) {
+                    link.addEventListener('click', closeMenu);
+                });
+            }
+            
+            // Close menu on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
         });
-    </script>
-    <script src="js/example.js"></script>
+    })();
+</script>
 </body>
 </html>

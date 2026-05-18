@@ -24,26 +24,50 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Navigation Bar -->
+           <!-- Navigation -->
     <nav class="navbar">
-        <div class="logo">ABOUND <span>SOLUTION</span></div>
-           <!-- Add this burger menu div if not present -->
-    <div class="burger" id="burgerBtn">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-    </div>
-    
-         <ul class="nav-links" id="navLinks">
+        <div class="logo-container">
+            <div class="pic_logo">
+                <img src="images/WhatsApp Image 2026-05-16 at 7.43.15 AM.jpeg" alt="Abound Solution Logo">
+            </div>
+            <div class="logo">ABOUND <span>SOLUTION</span></div>
+        </div>
+        
+        <!-- Hamburger Menu Button -->
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <!-- Desktop Menu (visible on tablet/desktop) -->
+        <ul class="desktop-menu">
             <li><a href="index.html">Home</a></li>
-            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="services.html">Services</a></li>
             <li><a href="project.html">Projects</a></li>
             <li><a href="feedback.html">Testimonials</a></li>
             <li><a href="contacts.html">Contact Us</a></li>
         </ul>
-        
     </nav>
 
+    <!-- Mobile Menu (sliding from left) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="project.html">Projects</a></li>
+            <li><a href="feedback.html">Testimonials</a></li>
+            <li><a href="contacts.html">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
 <div class="solar-container">
     <!-- Hero Section -->
     <div class="hero" data-aos="fade-down">
@@ -729,80 +753,9 @@
     </div>
 </div>
 
+
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-<script>
-    // Initialize AOS animations
-    AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 100
-    });
-
-    // Back to Top Button
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            backToTop.classList.add('show');
-        } else {
-            backToTop.classList.remove('show');
-        }
-    });
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Modal functionality
-    const modal = document.getElementById('serviceModal');
-    const closeModal = document.querySelector('.close-modal');
-
-    function showServiceDetails(serviceName) {
-        const modalBody = document.getElementById('modalBody');
-        modalBody.innerHTML = `
-            <div class="modal-body">
-                <i class="fas fa-solar-panel modal-icon"></i>
-                <h2>${serviceName}</h2>
-                <p>Thank you for your interest in our ${serviceName} service!</p>
-                <p>Our team of experts will provide you with the best solution tailored to your needs.</p>
-                <div class="modal-features">
-                    <h3>What's Included:</h3>
-                    <ul>
-                        <li>Free site assessment</li>
-                        <li>Professional installation</li>
-                        <li>5-year service warranty</li>
-                        <li>24/7 customer support</li>
-                    </ul>
-                </div>
-                <div class="modal-contact">
-                    <p>📞 Call us: +254 701 318 829</p>
-                    <p>📧 Email: aboundsolutionltd@gmail.com</p>
-                </div>
-                <a href="#" class="modal-btn">Request Quote →</a>
-            </div>
-        `;
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    }
-
-    closeModal.onclick = () => {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-
-    window.onclick = (event) => {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    }
-
-    // Image error handling
-    document.querySelectorAll('.service-image').forEach(img => {
-        img.onerror = function() {
-            this.src = 'https://via.placeholder.com/400x300/007bff/white?text=Image+Coming+Soon';
-        }
-    });
-</script>
 <script src="js/example.js"></script>
+
 </body>
 </html>

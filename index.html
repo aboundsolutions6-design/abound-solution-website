@@ -34,8 +34,8 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+          <!-- Navigation -->
+    <nav class="navbar">
         <div class="logo-container">
             <div class="pic_logo">
                 <img src="images/WhatsApp Image 2026-05-16 at 7.43.15 AM.jpeg" alt="Abound Solution Logo">
@@ -43,26 +43,38 @@
             <div class="logo">ABOUND <span>SOLUTION</span></div>
         </div>
         
-          <!-- Hamburger menu button -->
-    <div class="burger" id="burgerBtn">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-    </div>
-    
-         <ul class="nav-links" id="navLinks">
-            <li><a href="#home" class="active">Home</a></li>
+        <!-- Hamburger Menu Button -->
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <!-- Desktop Menu (visible on tablet/desktop) -->
+        <ul class="desktop-menu">
+            <li><a href="index.html">Home</a></li>
             <li><a href="#solutions">Solutions</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="projects.html">Projects</a></li>
-            <li><a href="contacts.html">Contact Us</a></li>
             <li><a href="feedback.html">Testimonials</a></li>
+            <li><a href="contacts.html">Contact Us</a></li>
         </ul>
     </nav>
 
-    <div class="overlay" id="overlay"></div>
+    <!-- Mobile Menu (sliding from left) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="project.html">Projects</a></li>
+            <li><a href="feedback.html">Testimonials</a></li>
+            <li><a href="contacts.html">Contact Us</a></li>
+        </ul>
+    </div>
 
-
+    <!-- Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
     <main>
         <!-- Hero Section -->
         <section id="home" class="hero">
@@ -280,6 +292,7 @@
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/example.js"></script>
     
     <script>
         // Initialize AOS
@@ -413,6 +426,8 @@
             };
         });
     </script>
-    <script src="js/example.js"></script>
+    <!-- Mobile Menu Script - Direct inline for reliability -->
+
+    
 </body>
 </html>

@@ -1571,10 +1571,15 @@
     }
 }
 /* ========================================
-   MOBILE-FIRST NAVIGATION (Base styles for all screens)
+   MOBILE-FIRST NAVIGATION
+   Base styles (works for phones 320px-767px)
    ======================================== */
 
-/* Base styles start with mobile (0px to 767px) */
+/* Hide scrollbar when mobile menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -1602,7 +1607,7 @@
 }
 
 .logo {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: #1a1a1a;
 }
@@ -1611,7 +1616,7 @@
     color: #007bff;
 }
 
-/* Mobile Menu Button (Hamburger) */
+/* Hamburger Menu Button - Visible on mobile only */
 .burger {
     display: flex;
     flex-direction: column;
@@ -1627,19 +1632,20 @@
     transition: all 0.3s ease;
 }
 
-/* Mobile Navigation Links - Hidden by default, slides in from right */
+/* Mobile Navigation Drawer - Hidden by default, slides from right */
 .nav-links {
     position: fixed;
     top: 0;
     right: -100%;
     width: 75%;
+    max-width: 300px;
     height: 100vh;
     background: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
     transition: right 0.3s ease;
     z-index: 1000;
     box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
@@ -1653,19 +1659,24 @@
     right: 0;
 }
 
+/* Navigation Links Styling */
 .nav-links li a {
     text-decoration: none;
     color: #1a1a1a;
     font-size: 1.2rem;
     font-weight: 500;
+    padding: 12px 20px;
+    display: block;
     transition: color 0.3s;
+    min-width: 44px;
+    min-height: 44px;
 }
 
 .nav-links li a:hover {
     color: #007bff;
 }
 
-/* Burger animation when open */
+/* Hamburger Animation when open */
 .burger.active .line1 {
     transform: rotate(-45deg) translate(-5px, 6px);
 }
@@ -1678,13 +1689,8 @@
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* Prevent body scroll when mobile menu is open */
-body.menu-open {
-    overflow: hidden;
-}
-
 /* ========================================
-   TABLET STYLES (768px and up)
+   TABLET & DESKTOP STYLES (768px and up)
    ======================================== */
 @media (min-width: 768px) {
     .navbar {
@@ -1700,12 +1706,12 @@ body.menu-open {
         font-size: 1.5rem;
     }
     
-    /* Hide hamburger menu on tablet/desktop */
+    /* Hide hamburger on desktop */
     .burger {
         display: none;
     }
     
-    /* Show horizontal navigation on tablet/desktop */
+    /* Show horizontal navigation on desktop */
     .nav-links {
         position: static;
         width: auto;
@@ -1720,10 +1726,10 @@ body.menu-open {
     
     .nav-links li a {
         font-size: 1rem;
-        position: relative;
+        padding: 0;
     }
     
-    /* Underline animation on hover */
+    /* Optional underline animation on hover */
     .nav-links li a::after {
         content: '';
         position: absolute;
@@ -1739,11 +1745,25 @@ body.menu-open {
         width: 100%;
     }
 }
+/*
+/* ========================================
+   GENERAL MOBILE FIXES
+   ======================================== */
+
+/* Make all images responsive */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Prevent horizontal scroll */
 body {
     overflow-x: hidden;
     width: 100%;
 }
 
+/* All containers should be full width */
 .container, 
 .about-container, 
 .solar-container, 
@@ -1753,8 +1773,55 @@ body {
     padding-right: 1rem;
     overflow-x: hidden;
 }
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+
+/* Minimum touch target size for all interactive elements */
+button, 
+.btn-learn-more, 
+.cta-button,
+a[class*="btn"],
+.nav-links li a {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Prevent iOS zoom on form inputs - set minimum 16px */
+input, 
+select, 
+textarea {
+    font-size: 16px !important;
+}
+
+/* Grids become single column on mobile */
+@media (max-width: 768px) {
+    .solutions-grid,
+    .services-grid,
+    .projects-grid,
+    .about-grid,
+    .features-grid,
+    .features-grid-about,
+    .stats-container,
+    .footer-content,
+    .solar-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    /* Reduce heading sizes on mobile */
+    h1, .hero-content h1 {
+        font-size: 1.8rem !important;
+    }
+    
+    h2 {
+        font-size: 1.5rem !important;
+    }
+    
+    /* Make buttons full width on mobile */
+    .cta-button, 
+    .btn-learn-more, 
+    .btn-primary, 
+    .btn-secondary {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
 }

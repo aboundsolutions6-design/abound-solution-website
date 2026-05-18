@@ -1571,15 +1571,17 @@
     }
 }
 /* ========================================
-   MOBILE-FIRST NAVIGATION
-   Base styles (works for phones 320px-767px)
+   MOBILE NAVIGATION - COMPLETE FIX
    ======================================== */
 
-/* Hide scrollbar when mobile menu is open */
+/* Hide scrollbar when menu is open */
 body.menu-open {
     overflow: hidden;
+    position: fixed;
+    width: 100%;
 }
 
+/* Navigation Bar */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -1596,7 +1598,6 @@ body.menu-open {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    z-index: 1001;
 }
 
 .pic_logo img {
@@ -1616,7 +1617,7 @@ body.menu-open {
     color: #007bff;
 }
 
-/* Hamburger Menu Button - Visible on mobile only */
+/* Hamburger Menu Button */
 .burger {
     display: flex;
     flex-direction: column;
@@ -1632,48 +1633,82 @@ body.menu-open {
     transition: all 0.3s ease;
 }
 
-/* Mobile Navigation Drawer - Hidden by default, slides from right */
+/* ========================================
+   MOBILE MENU - SLIDES OVER THE CONTENT
+   ======================================== */
+
+/* Navigation Drawer - Overlays content, doesn't push it */
 .nav-links {
     position: fixed;
     top: 0;
-    right: -100%;
-    width: 75%;
+    left: -100%;
+    width: 80%;
     max-width: 300px;
     height: 100vh;
     background: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    transition: right 0.3s ease;
-    z-index: 1000;
-    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+    align-items: flex-start;
+    gap: 1rem;
+    transition: left 0.3s ease;
+    z-index: 2000;
+    box-shadow: 5px 0 30px rgba(0, 0, 0, 0.2);
     list-style: none;
     margin: 0;
-    padding: 2rem;
+    padding: 2rem 1.5rem;
 }
 
-/* When active, menu slides in */
+/* When active, menu slides in from left */
 .nav-links.active {
-    right: 0;
+    left: 0;
 }
 
-/* Navigation Links Styling */
+/* Menu Items */
+.nav-links li {
+    width: 100%;
+}
+
 .nav-links li a {
     text-decoration: none;
     color: #1a1a1a;
     font-size: 1.2rem;
     font-weight: 500;
-    padding: 12px 20px;
+    padding: 12px 0;
     display: block;
     transition: color 0.3s;
-    min-width: 44px;
-    min-height: 44px;
+    border-bottom: 1px solid #eee;
 }
 
 .nav-links li a:hover {
     color: #007bff;
+    padding-left: 5px;
+}
+
+/* Close button inside menu (optional - adds an X at top) */
+.menu-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #666;
+}
+
+/* Dark overlay when menu is open */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1500;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
 }
 
 /* Hamburger Animation when open */
@@ -1690,7 +1725,7 @@ body.menu-open {
 }
 
 /* ========================================
-   TABLET & DESKTOP STYLES (768px and up)
+   DESKTOP STYLES (768px and up)
    ======================================== */
 @media (min-width: 768px) {
     .navbar {
@@ -1714,6 +1749,7 @@ body.menu-open {
     /* Show horizontal navigation on desktop */
     .nav-links {
         position: static;
+        left: auto;
         width: auto;
         height: auto;
         background: transparent;
@@ -1722,14 +1758,15 @@ body.menu-open {
         gap: 2rem;
         padding: 0;
         box-shadow: none;
+        max-width: none;
     }
     
     .nav-links li a {
         font-size: 1rem;
         padding: 0;
+        border-bottom: none;
     }
     
-    /* Optional underline animation on hover */
     .nav-links li a::after {
         content: '';
         position: absolute;
@@ -1744,84 +1781,64 @@ body.menu-open {
     .nav-links li a:hover::after {
         width: 100%;
     }
+    
+    .overlay {
+        display: none !important;
+    }
 }
-/*
 /* ========================================
-   GENERAL MOBILE FIXES
+   PREVENT HORIZONTAL SCROLL (ANDROID FIX)
    ======================================== */
 
-/* Make all images responsive */
+html {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* All main containers */
+.container,
+.about-container,
+.solar-container,
+.projects-container,
+main,
+footer,
+section {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Prevent any element from causing horizontal scroll */
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Fix for images that might overflow */
 img {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-/* Prevent horizontal scroll */
-body {
-    overflow-x: hidden;
-    width: 100%;
-}
-
-/* All containers should be full width */
-.container, 
-.about-container, 
-.solar-container, 
-.projects-container {
-    max-width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    overflow-x: hidden;
-}
-
-/* Minimum touch target size for all interactive elements */
-button, 
-.btn-learn-more, 
-.cta-button,
-a[class*="btn"],
-.nav-links li a {
-    min-height: 44px;
-    min-width: 44px;
-}
-
-/* Prevent iOS zoom on form inputs - set minimum 16px */
-input, 
-select, 
-textarea {
-    font-size: 16px !important;
-}
-
-/* Grids become single column on mobile */
+/* Fix for grid layouts on mobile */
 @media (max-width: 768px) {
     .solutions-grid,
     .services-grid,
     .projects-grid,
     .about-grid,
     .features-grid,
-    .features-grid-about,
     .stats-container,
-    .footer-content,
-    .solar-grid {
+    .footer-content {
         grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
-    }
-    
-    /* Reduce heading sizes on mobile */
-    h1, .hero-content h1 {
-        font-size: 1.8rem !important;
-    }
-    
-    h2 {
-        font-size: 1.5rem !important;
-    }
-    
-    /* Make buttons full width on mobile */
-    .cta-button, 
-    .btn-learn-more, 
-    .btn-primary, 
-    .btn-secondary {
-        display: block !important;
         width: 100% !important;
-        text-align: center !important;
+        overflow-x: hidden !important;
     }
 }
